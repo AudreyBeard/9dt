@@ -36,7 +36,7 @@ class DropToken(object):
             self.putTo = []
             self.winner = 0
             self.exit = 0
-            print('Great! Player %i starts first.' % self.player)    
+            print('Player %i starts first.' % self.player)    
             print('Please enter one of the following commands: PUT <column>, GET, BOARD, or EXIT')
         
         except:
@@ -180,8 +180,8 @@ class DropToken(object):
             Winner of the game (1 or 2) or 0 for no one (yet)
         '''
         # Error checking
-        if row < 1 or row > 4 or col < 1 or col > 4:
-            print('ERROR: KEEPSCORE received invalid input. Exiting.)
+        if row < 0 or row > 3 or col < 0 or col > 3:
+            print('ERROR: KEEPSCORE received invalid input. Exiting.')
             self.exit = 1
         row = int(row)
         col = int(col)
@@ -212,10 +212,11 @@ class DropToken(object):
     
 ''' Things to do when called from the command line '''
 if __name__ == '__main__':
-
+    print('')
     print('[]=================================[]')
     print('|| Welcome to 98point6 Drop Token! ||')
     print('[]=================================[]')
+    print('')
     
     thisGame = DropToken(1)
     
