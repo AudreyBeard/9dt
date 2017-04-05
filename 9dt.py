@@ -63,21 +63,21 @@ class DropToken(object):
                 try:                                # Cast second argument as integer
                     cmd[1] = int(cmd[1])
                 except:                             # Only allow integers
-                    print('Oops! When using PUT, the second argument must be an integer. Try again.')
+                    print('ERROR')
                     return -1
                 
                 if cmd[1] < 1 or cmd[1] > 4:        # Second argument must be one of four columns
-                    print('Oops! When using PUT, the second argument must be between 1 and 4. Try again')
+                    print('ERROR')
                     return -1
                     
                 else:                               # Parsed OK, process validity next
                 
                     if self.winner:                 # Game has been won
-                        print('The game is already over! Player %i won!' % self.winner)
+                        print('ERROR')
                         return 0                    # Invalid move, no error
                         
                     elif len(self.putTo) == 16:     # Game is already a draw
-                        print('The game is already over! It ended in a draw!')
+                        print('ERROR')
                         return 0                    # Invalid move, no error
                         
                     elif self._put(int(cmd[1])):     # This put command is valid
@@ -93,11 +93,11 @@ class DropToken(object):
                         return 1                    # All three are valid moves
                     
                     else:                           # Full column
-                        print('That column is full. Try another.')
+                        print('ERROR')
                     return 0                        # Invalid input, no error
                     
             else:                                   # Fudged input
-                print('Oops. You entered two arguments, but the first one was not PUT. Please follow the prompt.')
+                print('ERROR')
                 return -1                           # Invalid input, not acceptable
                 
         elif len(cmd) == 1:                         # GET, BOARD, or EXIT
@@ -115,11 +115,11 @@ class DropToken(object):
                 return 1
                 
             else:                                   # Invalid input
-                print('Oops. You entered one argument, but it was not GET, BOARD, or EXIT. Try again')
+                print('ERROR')
                 return -1
                 
         else:                                       # INvalid input
-            print('Oops. You entered too many arguments. Try again.')
+            print('ERROR')
             return -1
             
         
@@ -179,7 +179,7 @@ class DropToken(object):
         OUTPUT:
             Winner of the game (1 or 2) or 0 for no one (yet)
         '''
-        # Error checking
+        # Error checking (these should never happen using API)
         if row < 0 or row > 3 or col < 0 or col > 3:
             print('ERROR: KEEPSCORE received invalid input. Exiting.')
             self.exit = 1
