@@ -15,9 +15,10 @@ CLI that loops over stdIn taking commands, and prints out responses
 based on those commands.
 
 ### Commands
--`PUT <column>`
+
+- `PUT <column>`
     -Yields `(OK | ERROR | WIN | DRAW)`
--`GET`
+- `GET`
     - Yields a list of columns that have been successfully put to
 - `BOARD`
     - Yields a 4x4 matrix that shows the board state
